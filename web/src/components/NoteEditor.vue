@@ -53,6 +53,7 @@ import TableHeader from '@tiptap/extension-table-header'
 import Link from '@tiptap/extension-link'
 import { useNoteStore } from '@/stores/note'
 import { Document, Share, Loading } from '@element-plus/icons-vue'
+import { isBackendAvailable } from '@/api/localStorage'
 import EditorToolbar from './EditorToolbar.vue'
 import { ElMessage } from 'element-plus'
 
@@ -140,6 +141,10 @@ watch(isDirty, (dirty) => {
 
 async function onShare() {
   if (!noteStore.currentNote) return
+  if (!isBackendAvailable()) {
+    ElMessage.warning('分享功能需要启动后端服务')
+    return
+  }
   shareDialog.value.visible = true
   shareDialog.value.url = ''
   const result = await noteStore.share(noteStore.currentNote.id)
