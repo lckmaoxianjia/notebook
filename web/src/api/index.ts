@@ -1,9 +1,19 @@
 import axios from 'axios'
+import { ElMessage } from 'element-plus'
 
 const api = axios.create({
   baseURL: '/api',
   timeout: 10000,
 })
+
+api.interceptors.response.use(
+  response => response,
+  error => {
+    const msg = error.response?.data?.message || error.message || '请求失败'
+    ElMessage.error(msg)
+    return Promise.reject(error)
+  }
+)
 
 export interface FolderItem {
   id: number

@@ -1,0 +1,8 @@
+node_modules/
+target/
+*.class
+*.jar
+*.log
+.claude/
+dist/
+.DS_Store

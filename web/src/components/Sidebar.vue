@@ -171,20 +171,20 @@ function confirmDialog() {
   dialog.visible = false
 }
 
-// Watch route to restore state
+// Watch route to restore state (immediate for direct URL entry)
 watch(() => route.params.folderId, async (id) => {
   if (id) {
     selectedFolderId.value = Number(id)
     await noteStore.fetchList(Number(id))
   }
-})
+}, { immediate: true })
 
 watch(() => route.params.noteId, async (id) => {
   if (id) {
     currentNoteId.value = Number(id)
     await noteStore.fetchDetail(Number(id))
   }
-})
+}, { immediate: true })
 </script>
 
 <style scoped>

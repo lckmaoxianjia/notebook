@@ -152,6 +152,7 @@ async function copyShareLink() {
 }
 
 onBeforeUnmount(() => {
+  if (isDirty.value) save()
   editor.value?.destroy()
 })
 </script>
