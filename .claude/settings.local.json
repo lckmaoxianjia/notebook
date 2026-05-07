@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(java -version)",
+      "Bash(npm -v)",
+      "Bash(mvn -version)",
+      "Bash(mysql --version)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(npm install *)",
+      "Bash(mysqladmin ping *)",
+      "Bash(mysql *)",
+      "Bash(npx vue-tsc *)",
+      "Bash(mvn compile *)",
+      "Bash(mvn spring-boot:run)",
+      "Bash(git reset *)",
+      "Bash(npx vite *)",
+      "Bash(gh auth *)",
+      "Bash(ssh -T git@github.com)",
+      "Bash(git push *)",
+      "Bash(ssh-keygen *)",
+      "Bash(git remote *)",
+      "Bash(git subtree *)",
+      "Bash(git checkout *)",
+      "Bash(git rm *)",
+      "WebFetch(domain:lckmaoxianjia.github.io)"
+    ]
+  }
+}
