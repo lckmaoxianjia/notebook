@@ -1,8 +1,14 @@
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
 
+// 开发环境走Vite代理 /api → localhost:8080
+// 生产环境可通过 VITE_API_BASE_URL 环境变量配置后端地址
+const baseURL = import.meta.env.PROD
+  ? (import.meta.env.VITE_API_BASE_URL || '/api')
+  : '/api'
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL,
   timeout: 10000,
 })
 

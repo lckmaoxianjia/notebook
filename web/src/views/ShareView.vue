@@ -5,9 +5,6 @@
       <span class="share-badge">只读</span>
     </div>
     <div class="share-content" v-if="note?.content" v-html="note.content" />
-    <div class="share-empty" v-else-if="!loading && noBackend">
-      <p>分享功能需要启动后端服务</p>
-    </div>
     <div class="share-empty" v-else-if="!loading">
       <p>文档不存在或链接已失效</p>
     </div>
@@ -18,18 +15,12 @@
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getSharedNote, type NoteDetail } from '@/api'
-import { isBackendAvailable } from '@/api/localStorage'
 
 const route = useRoute()
 const note = ref<NoteDetail | null>(null)
 const loading = ref(true)
-const noBackend = !isBackendAvailable()
 
 onMounted(async () => {
-  if (noBackend) {
-    loading.value = false
-    return
-  }
   try {
     note.value = await getSharedNote(route.params.token as string)
   } catch {
